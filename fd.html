@@ -57,7 +57,7 @@ function diagram(selection, factors, size) {
         })
         .call(diagram, factors, (size - radius));
   } else {
-    selection.append("circle").attr("r", Math.max(1, size-1));
+    selection.append("circle").attr("r", Math.max(1, size-0.5));
   }
 }
 
