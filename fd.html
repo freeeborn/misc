@@ -37,7 +37,7 @@ svg.append("text")
 svg.append("g")
     .attr("transform", "translate(" + [width / 2, height / 2] + ")")
     .each(function(d) {
-      d3.select(this).call(diagram, primeFactors(d), width / 2);
+      d3.select(this).call(diagram, primeFactors(d), width / 2 - 1);
     });
 
 function diagram(selection, factors, size) {
