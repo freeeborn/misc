@@ -59,6 +59,11 @@ function diagram(selection, factors, size) {
   } else selection.append("circle").attr("r", size);
 }
 
+function shuffle(o){ 
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
 function primeFactors(n) {
   var factors = [],
       f;
@@ -66,7 +71,7 @@ function primeFactors(n) {
     factors.push(f = factor(n));
     n /= f;
   }
-  factors.reverse();
+  shuffle(factors);
   return factors;
 }
 
