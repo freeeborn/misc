@@ -55,8 +55,8 @@ function diagram(selection, factors, size) {
           var angle = d * 360 / n + offset;
           return "translate(0," + δy + ")rotate(" + angle + ")translate(" + radius + ")rotate(" + -offset  + ")";
         })
-        .call(diagram, factors, (size-radius)*0.9);
-  } else selection.append("circle").attr("r", size);
+        .call(diagram, factors, (size - radius) - 1);
+  } else selection.append("circle").attr("r", Math.max(1, size));
 }
 
 function shuffle(o){ 
