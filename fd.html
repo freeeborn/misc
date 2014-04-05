@@ -45,20 +45,18 @@ function diagram(selection, factors, size) {
     var n = factors.pop(),
         offset = n === 4 ? 45 : n === 2 ? (factors.length % 2 === 0 ? -90 : 0) : -90,
         s = Math.sin(Math.PI / n),
-        radius = size - size * s / (1 + s),
-        δy = n & 1 ? (radius / 2) * (1 - Math.cos(Math.PI / n)) : 0;
+        radius = size - size * s / (1 + s);
 // see http://www.had2know.com/academics/inner-circular-ring-radii-formulas-calculator.html for inner circle radius calc
     selection.selectAll("g")
         .data(d3.range(n))
       .enter().append("g")
         .attr("transform", function(d) {
           var angle = d * 360 / n + offset;
-          return "translate(0," + δy + ")rotate(" + angle + ")translate(" + radius + ")rotate(" + -offset  + ")";
+          return "rotate(" + angle + ")translate(" + radius + ")rotate(" + -offset  + ")";
         })
         .call(diagram, factors, (size - radius));
-  } else {
-    selection.append("circle").attr("r", Math.max(1, size-0.5));
-  }
+//    selection.append("circle").attr("r", Math.max(1, size)).attr("style", "fill:none;fill-opacity:0.0;stroke:red;");
+  } else selection.append("circle").attr("r", Math.max(1, size-1)).attr("style", "fill:black;stroke:grey;");
 }
 
 function shuffle(o){ 
